@@ -128,4 +128,9 @@ public class IrregularRegionView extends View {
         }
         return false;
     }
+
+    public void setColors(int[] colors) {
+        this.colors = colors;
+        invalidate();
+    }
 }
