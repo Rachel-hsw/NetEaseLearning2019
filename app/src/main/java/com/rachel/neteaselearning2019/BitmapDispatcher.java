@@ -68,7 +68,13 @@ public class BitmapDispatcher extends Thread {
     }
 
     private Bitmap findImage(BitmapRequest br) {
-        Bitmap bitmap = downloadImage(br.getUrl());
+        Bitmap bitmap = null;
+        bitmap = LruCacheUtil.findFromCache(br.getUrlMd5());
+        //从网络加载
+        bitmap = downloadImage(br.getUrl());
+        if (bitmap == null) {
+            LruCacheUtil.put(br.getUrlMd5(), bitmap);
+        }
         return bitmap;
     }
 
