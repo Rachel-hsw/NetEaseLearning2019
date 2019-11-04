@@ -3,6 +3,7 @@ package com.rachel.neteaselearning2019;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         BigView bigView = findViewById(R.id.big_view);
         try {
             InputStream is = getAssets().open("a.png");
-            bigView.setImage(is);
+            Drawable drawable = Drawable.createFromStream(is, null);
+            bigView.setImage(drawable);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.singe).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageView imageView = new ImageView(MainActivity.this);
+                BigView imageView = new BigView(MainActivity.this);
                 imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 mScroll_line.addView(imageView);
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         for (int i = 1; i <= 10; i++) {
-                            ImageView imageView = new ImageView(MainActivity.this);
+                            BigView imageView = new BigView(MainActivity.this);
                             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                             mScroll_line.addView(imageView);

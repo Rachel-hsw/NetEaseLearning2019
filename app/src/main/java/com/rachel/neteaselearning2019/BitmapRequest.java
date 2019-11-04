@@ -20,7 +20,7 @@ public class BitmapRequest {
     //强软弱
     //假设我们做的图片应用，用弱引用，你不停的回收，就会造成内存抖动，gc频繁的去回收，gc一回收，
     // 其他线程会全部挂起，如果我们正在做ui线程的更新，就会造成UI的卡顿
-    private SoftReference<ImageView> imageView;
+    private SoftReference<BigView> imageView;
     //设置占位图片
     private int resId;
     //回调对象
@@ -48,7 +48,7 @@ public class BitmapRequest {
      * imageView复用会出现错位 setTag
      * @param imageView
      */
-    public  void into(ImageView imageView){
+    public  void into(BigView imageView){
         imageView.setTag(this.urlMd5);
         this.imageView=new SoftReference<>(imageView);
         RequestManager.getInstance().addBitmapRequest(this);
@@ -70,11 +70,11 @@ public class BitmapRequest {
         this.url = url;
     }
 
-    public ImageView getImageView() {
+    public BigView getImageView() {
         return imageView.get();
     }
 
-    public void setImageView(SoftReference<ImageView> imageView) {
+    public void setImageView(SoftReference<BigView> imageView) {
         this.imageView = imageView;
     }
 
