@@ -1,0 +1,13 @@
+请问一个比较小白的问题，list<book> listbook只知道book的bookname,怎么找出该书名的位置，我用listbook.indexof(bookname)返回一直是-1
+
+indexof返回的是指定元素在此列表中的第一个匹配项。返回-1表示，不存在该元素。你的list里面存的对象是book，然后你直接去找string。对象都不一样，当然不存在@深圳-2年-颜陈煜
+
+listbook.indexof(某个book对象)，要找书名位置，用循环遍历出每个book对象取出bookname来匹配@深圳-2年-颜陈煜
+
+@..████████.. 要是list里面数据很多，那多耗性能啊
+
+还不算多，还好，不过确实如果多的话，确实是个麻烦事
+
+用map，来存储嘛，key是name，value是对象
+
+
